@@ -1,7 +1,7 @@
 FROM alpine:3.3
 
 ENV AWSCLI_VERSION "1.10.38"
-ENV KMS_SECRETS_OUT_PATH "/out/secrets.env"
+ENV SECRETS_OUT_PATH "/out/secrets.env"
 
 RUN apk add --update bash groff less python py-pip \
     && pip install awscli==$AWSCLI_VERSION \
