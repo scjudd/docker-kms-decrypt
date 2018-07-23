@@ -6,14 +6,14 @@ Quick and dirty example:
   -e "KMS_VAR=AQEC...1HCn8g==" \
   -e AWS_ACCESS_KEY_ID="AKIAJIYCZ6SZNMPYWSRQ" \
   -e AWS_SECRET_ACCESS_KEY=$(pass aws-secret-key) i\
-  -v secrets:/out
-  -it lrvick/kms-decrypt
+  -v /home/core/secrets/:/out/
+  -it scjudd/kms-decrypt
 ```
 
-You can then source the env file to another container like so:
+You can then provide the env file to another container like so:
 
 ```
 > docker run \
-  -v secrets:/secrets.env org/myapp \
-  sh -c "source secrets.env; myapp_cmd"
+  --env-file /home/core/secrets/secrets.env \
+  org/myapp
 ```
