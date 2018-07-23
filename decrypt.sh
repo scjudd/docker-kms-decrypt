@@ -18,5 +18,5 @@ for line in $(env | egrep '^KMS_'); do
 	decrypted_value=$(echo $decrypted_value_base64 | base64 -d)
 	echo "key=$key"
 	echo "encrypted_value=$encrypted_value"
-	echo "export $key=$decrypted_value" >> "$out_path"
+	echo "$key=$decrypted_value" >> "$out_path"
 done
