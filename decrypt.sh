@@ -7,7 +7,8 @@ out_path=${SECRETS_OUT_PATH:-/out/secrets.env}
 
 rm "$out_path" 2> /dev/null
 for line in $(env | egrep '^KMS_'); do
-	key="${line%%=*}"
+	kms_key="${line%%=*}"
+	key=${kms_key/KMS_/}
 	encrypted_value=${line#*=}
 	decrypted_value_base64=$( \
 		aws kms decrypt \
