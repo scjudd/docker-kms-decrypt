@@ -3,7 +3,7 @@
 source /etc/profile
 
 unset IFS
-out_path=${KMS_SECRETS_OUT_PATH:/out/secrets.env}
+out_path=${KMS_SECRETS_OUT_PATH:-/out/secrets.env}
 
 rm "$out_path" 2> /dev/null
 for line in $(env | egrep '^KMS_'); do
